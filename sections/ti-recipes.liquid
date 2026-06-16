@@ -1,18 +1,21 @@
 {{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
 <div class="ti-recipes">
-	<h2 class="ti-recipes__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span></h2>
+	<h2 class="ti-recipes__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script ti-script--badge">{{ section.settings.heading_script }}</span></h2>
+	{%- if section.settings.button_text != blank -%}
+		<div class="ti-recipes__top-btn">
+			<a class="ti-btn ti-btn--yellow" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+		</div>
+	{%- endif -%}
 	<div class="ti-recipes__grid">
 		{%- for block in section.blocks -%}
-			<div class="ti-recipe-card" style="background-image:url({{ 'ti-recipe-paper-bg.jpg' | asset_url }})" {{ block.shopify_attributes }}>
+			<div class="ti-recipe-card" {{ block.shopify_attributes }}>
+				<div class="ti-recipe-card__pin"></div>
 				<img src="{{ block.settings.image | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
 				<h3>{{ block.settings.title }}</h3>
 				<a class="ti-btn ti-btn--yellow" href="{{ block.settings.link | default: '#' }}">{{ block.settings.button_text | default: 'View Full Recipe' }}</a>
 			</div>
 		{%- endfor -%}
 	</div>
-	{%- if section.settings.button_text != blank -%}
-		<a class="ti-btn ti-btn--yellow" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
-	{%- endif -%}
 </div>
 {% schema %}
 {

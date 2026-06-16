@@ -1,8 +1,9 @@
 /* Truly Indian — homepage redesign
    Colors, fonts and copy are pulled directly from the Figma source file
-   (file 01qDyfVSxTY5fd3rS7woEZ, node 788:18 "Final Page"). Fonts actually
-   used in the design (HandDeco, Brushberry, Brushberry SansTwo, Futura PT)
-   aren't licensed/available to us, so close substitutes are used:
+   (file 01qDyfVSxTY5fd3rS7woEZ, node 788:18 "Final Page"), cross-checked
+   against an actual Figma render export. Fonts used in the design
+   (HandDeco, Brushberry, Brushberry SansTwo, Futura PT) aren't
+   licensed/available to us, so close substitutes are used:
    HandDeco -> Decofree (brand-supplied), Brushberry -> Caveat,
    Brushberry SansTwo -> Oswald, Futura PT -> Poppins. */
 
@@ -15,7 +16,6 @@
 }
 
 :root {
-	/* exact hex values sampled from the Figma fills */
 	--ti-red: #e53b2e;
 	--ti-header-red: #d02030;
 	--ti-header-red-dark: #c91725;
@@ -31,8 +31,7 @@
 	--ti-cream-2: #fdf1e1;
 	--ti-cream-text: #f2c9ad;
 	--ti-orange: #e46b17;
-	--ti-terracotta: #e16d2c;
-	--ti-burnt-orange: #ef6d23;
+	--ti-base-peach: #f1caad;
 	--ti-magenta: #eb3986;
 	--ti-magenta-2: #e32880;
 	--ti-pink: #e2207c;
@@ -58,6 +57,9 @@
 	font-weight: 700;
 	letter-spacing: 0;
 	text-transform: none;
+}
+
+.ti-script--badge {
 	padding: 0.05em 0.4em;
 	border-radius: 8px;
 	transform: rotate(-2deg);
@@ -89,12 +91,12 @@
 	cursor: pointer;
 }
 
-.ti-btn--yellow { background: var(--ti-yellow); color: var(--ti-dark-text); }
+.ti-btn--yellow { background: var(--ti-yellow); color: var(--ti-dark-text); border: 2px solid var(--ti-dark-text); }
 .ti-btn--navy { background: var(--ti-navy-2); color: var(--ti-yellow); }
-.ti-btn--red { background: var(--ti-header-red); color: var(--ti-yellow-2); }
+.ti-btn--red { background: var(--ti-header-red); color: var(--ti-yellow-2); border: 2px solid var(--ti-blue); }
 
 /* ---------- Header CTA buttons ---------- */
-.header-ctas { display: flex; align-items: center; gap: 10px; }
+.header-ctas { display: flex; align-items: center; gap: 10px; right: 20px; position: absolute; }
 .header-cta {
 	white-space: nowrap;
 	font-family: var(--ti-font-body);
@@ -133,48 +135,22 @@
 	color: #ffc31c;
 	font-family: var(--ti-font-display);
 	text-transform: uppercase;
+	padding: 0.05em 0.3em;
+	border-radius: 6px;
+	transform: rotate(-2deg);
 }
 .ti-hero__cta { margin-top: 24px; }
 
-/* ================= Trust badge row ================= */
-.ti-badge-row {
-	padding: 36px 20px;
-}
-.ti-badge-row__inner {
-	max-width: 1100px;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 24px;
-	text-align: center;
-}
-.ti-badge-row__icon {
-	width: 64px;
-	height: 64px;
-	margin: 0 auto 12px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.15);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.ti-badge-row__icon svg { width: 30px; height: 30px; fill: currentColor; }
-.ti-badge-row__label {
-	font-family: var(--ti-font-label);
-	font-size: 18px;
-	font-weight: 600;
-	text-transform: uppercase;
-}
-@media (max-width: 749px) {
-	.ti-badge-row__inner { grid-template-columns: 1fr; gap: 28px; }
-}
+/* ================= Trust badge rows (rendered as exact image exports) ================= */
+.ti-badge-row-img { line-height: 0; }
+.ti-badge-row-img img { width: 100%; display: block; }
 
 /* ================= Explore Authentic Flavors ================= */
 .ti-explore { background: var(--ti-cream); padding: 60px 20px; }
 .ti-explore__inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 40px; align-items: flex-start; }
 .ti-explore__main { flex: 1 1 60%; }
 .ti-explore__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-pink); margin-bottom: 24px; }
-.ti-explore__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-explore__heading .ti-script { background: var(--ti-blue); color: #fff; padding: 0.05em 0.3em; border-radius: 6px; transform: rotate(-2deg); }
 .ti-explore__grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -189,6 +165,9 @@
 	border-radius: 6px;
 	background: #d9d9d9;
 	margin-bottom: 10px;
+	border: 3px solid var(--ti-pink);
+	padding: 4px;
+	box-sizing: border-box;
 }
 .ti-explore__card span {
 	font-family: var(--ti-font-body);
@@ -199,7 +178,13 @@
 	color: #633f26;
 }
 .ti-explore__promo { flex: 0 0 32%; }
-.ti-explore__promo img { width: 100%; border-radius: 10px; display: block; }
+.ti-explore__promo img {
+	width: 100%;
+	border-radius: 10px;
+	display: block;
+	border: 6px solid var(--ti-blue);
+	box-sizing: border-box;
+}
 @media (max-width: 899px) {
 	.ti-explore__inner { flex-direction: column; }
 	.ti-explore__grid { grid-template-columns: repeat(2, 1fr); }
@@ -209,7 +194,7 @@
 /* ================= Trace It Back to the Soil ================= */
 .ti-soil {
 	position: relative;
-	background: var(--ti-orange);
+	background: var(--ti-yellow);
 	color: var(--ti-navy);
 	padding: 70px 20px;
 	overflow: hidden;
@@ -219,48 +204,81 @@
 	content: 'FARM';
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 60%;
 	transform: translate(-50%, -50%);
 	font-family: var(--ti-font-display);
 	font-size: 18vw;
-	color: rgba(255, 255, 255, 0.15);
+	color: rgba(184, 130, 0, 0.35);
 	white-space: nowrap;
 	pointer-events: none;
 	z-index: 0;
 }
-.ti-soil__inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; }
-.ti-soil__heading { font-size: clamp(28px, 4vw, 46px); margin-bottom: 28px; }
+.ti-soil__inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.ti-soil__heading { font-size: clamp(28px, 4vw, 46px); margin-bottom: 28px; color: var(--ti-navy); }
 .ti-soil__heading .ti-script {
 	background: var(--ti-blue-2);
 	color: var(--ti-yellow);
 	font-family: var(--ti-font-display);
+	padding: 0.1em 0.3em;
+	border-radius: 6px;
+	transform: rotate(-1.5deg);
 }
-.ti-soil__photos {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 16px;
-	margin-bottom: 30px;
+.ti-soil__photo-wrap {
+	position: relative;
+	width: 320px;
+	margin: 0 auto 36px;
 }
-.ti-soil__photos img {
+.ti-soil__photo-wrap img.ti-soil__main-photo {
 	width: 100%;
 	aspect-ratio: 1;
 	object-fit: cover;
 	border-radius: 50%;
-	border: 4px solid #fff;
+	border: 6px solid #fff;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
-@media (max-width: 749px) {
-	.ti-soil__photos { grid-template-columns: repeat(2, 1fr); }
+.ti-soil__tag {
+	position: absolute;
+	bottom: -10px;
+	left: -36px;
+	width: 110px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: var(--ti-cream);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: var(--ti-font-label);
+	font-size: 12px;
+	color: var(--ti-navy);
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+	line-height: 1.3;
+	padding: 6px;
+}
+.ti-soil__tag .ti-script { color: var(--ti-red); font-size: 18px; display: block; }
+.ti-soil__icon {
+	position: absolute;
+	top: -20px;
+	left: -10px;
+	width: 80px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: var(--ti-pink);
+	padding: 14px;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 .ti-soil__btn {
 	font-family: var(--ti-font-label);
-	color: var(--ti-blue-2);
-	background: #fff;
-	border-radius: 50px;
-	padding: 14px 30px;
+	color: var(--ti-yellow);
+	background: var(--ti-header-red);
+	border: 3px solid var(--ti-blue);
+	border-radius: 6px;
+	padding: 13px 30px;
 	text-decoration: none;
 	font-weight: 600;
 	letter-spacing: 0.03em;
 	display: inline-block;
+	text-transform: uppercase;
 }
 
 /* ================= Loved by All ================= */
@@ -275,41 +293,70 @@
 .ti-loved__bg {
 	position: absolute;
 	inset: 0;
-	opacity: 0.18;
+	opacity: 0.15;
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
 }
 .ti-loved__inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-.ti-loved__heading { font-size: clamp(28px, 4vw, 42px); margin-bottom: 22px; }
-.ti-loved__heading .ti-script { background: var(--ti-yellow); color: var(--ti-blue-3); }
-.ti-loved__stars { display: flex; justify-content: center; gap: 6px; margin-bottom: 24px; }
-.ti-loved__stars svg { width: 26px; height: 26px; fill: var(--ti-yellow); background: #fff; border-radius: 50%; padding: 4px; }
-.ti-loved__quote { font-family: var(--ti-font-display); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.4; margin-bottom: 20px; }
+.ti-loved__heading { font-size: clamp(28px, 4vw, 42px); margin-bottom: 22px; color: #fff; }
+.ti-loved__heading .ti-script {
+	background: var(--ti-yellow);
+	color: var(--ti-blue-3);
+	padding: 0.05em 0.35em;
+	border-radius: 8px;
+	transform: rotate(-3deg);
+}
+.ti-loved__stars { display: flex; justify-content: center; gap: 4px; margin-bottom: 24px; }
+.ti-loved__stars svg { width: 22px; height: 22px; fill: var(--ti-yellow); }
+.ti-loved__quote { font-family: var(--ti-font-display); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.4; margin-bottom: 20px; color: #fff; }
 .ti-loved__author { font-family: var(--ti-font-label); color: #fff; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 16px; }
-.ti-loved__amazon { height: 24px; opacity: 0.9; }
+.ti-loved__amazon { height: 22px; opacity: 0.9; filter: brightness(0) invert(1); }
 
 /* ================= A Dash of Salt (recipes) ================= */
-.ti-recipes { background: var(--ti-terracotta); padding: 60px 20px; text-align: center; }
-.ti-recipes__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-cream); margin-bottom: 36px; }
-.ti-recipes__heading .ti-script { background: var(--ti-magenta); color: #fff; }
+.ti-recipes { background: var(--ti-orange); padding: 60px 20px; text-align: center; }
+.ti-recipes__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-cream); margin-bottom: 24px; }
+.ti-recipes__heading .ti-script {
+	background: var(--ti-magenta);
+	color: #fff;
+	padding: 0.05em 0.4em;
+	border-radius: 4px;
+	transform: rotate(-2deg);
+	display: inline-block;
+}
+.ti-recipes__top-btn { margin-bottom: 30px; }
 .ti-recipes__grid {
 	max-width: 1100px;
-	margin: 0 auto 30px;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 24px;
 }
 .ti-recipe-card {
-	background-size: cover;
-	background-position: center;
+	position: relative;
+	background: repeating-linear-gradient(#fff 0 0), #fff;
 	border-radius: 4px;
-	padding: 16px 16px 24px;
+	padding: 20px 16px 24px;
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 	transform: rotate(-1.2deg);
+	background-image: linear-gradient(to right, #fff 9px, transparent 9px), radial-gradient(circle, #e46b17 4px, transparent 5px);
+	background-size: 100% 100%, 100% 16px;
+	background-repeat: no-repeat, repeat-y;
+	background-position: 0 0, 4px 0;
 }
 .ti-recipe-card:nth-child(2) { transform: rotate(1deg); }
 .ti-recipe-card:nth-child(3) { transform: rotate(-0.6deg); }
+.ti-recipe-card__pin {
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 35%, #ff6b5e, #c1121f);
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+}
 .ti-recipe-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; margin-bottom: 14px; }
 .ti-recipe-card h3 {
 	font-family: var(--ti-font-label);
@@ -323,44 +370,81 @@
 }
 
 /* ================= Featured & How (awards) ================= */
-.ti-awards { background: var(--ti-terracotta); padding: 60px 20px; }
+.ti-awards { background: var(--ti-base-peach); padding: 60px 20px; }
 .ti-awards__inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 50px; align-items: center; }
 .ti-awards__text { flex: 1 1 45%; }
-.ti-awards__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-cream); margin-bottom: 18px; }
-.ti-awards__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-awards__heading { font-size: clamp(28px, 4vw, 44px); margin-bottom: 18px; color: var(--ti-pink); }
+.ti-awards__heading .ti-script { color: var(--ti-blue); text-decoration: underline wavy var(--ti-blue) 2px; text-underline-offset: 6px; }
 .ti-awards__copy { font-family: var(--ti-font-body); color: var(--ti-dark-text); margin-bottom: 24px; }
-.ti-awards__badges { display: flex; gap: 14px; flex-wrap: wrap; }
-.ti-awards__badges img { width: 70px; height: auto; }
-.ti-awards__carousel { flex: 1 1 45%; position: relative; }
-.ti-awards__carousel img { width: 100%; border-radius: 10px; display: block; }
+.ti-awards__badges { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.ti-awards__badges img { width: 64px; height: auto; }
+.ti-awards__carousel {
+	flex: 1 1 45%;
+	position: relative;
+	padding: 14px;
+	background: var(--ti-orange);
+	border-radius: 4px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+	transform: rotate(1deg);
+}
+.ti-awards__carousel img.ti-awards__photo { width: 100%; border-radius: 4px; display: block; }
 .ti-awards__arrow {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 36px;
-	height: 36px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background: var(--ti-orange);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
-.ti-awards__arrow--prev { left: -18px; transform: translateY(-50%) rotate(180deg); }
-.ti-awards__arrow--next { right: -18px; }
+.ti-awards__arrow img { width: 16px; height: 16px; filter: brightness(0) invert(1); }
+.ti-awards__arrow--prev { left: -19px; }
+.ti-awards__arrow--prev img { transform: rotate(180deg); }
+.ti-awards__arrow--next { right: -19px; }
 @media (max-width: 899px) {
 	.ti-awards__inner { flex-direction: column; }
 }
 
 /* ================= Taste the Real India CTA ================= */
-.ti-cta { background: var(--ti-terracotta); padding: 60px 20px; }
-.ti-cta__inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; align-items: center; }
-.ti-cta__image { flex: 0 0 38%; }
-.ti-cta__image img { width: 100%; border-radius: 12px; display: block; }
-.ti-cta__heading { font-size: clamp(30px, 5vw, 50px); color: #fffbf0; margin-bottom: 22px; }
-.ti-cta__heading .ti-script { background: #fff; color: var(--ti-pink); }
+.ti-cta { background: var(--ti-base-peach); padding: 60px 20px 90px; position: relative; overflow: visible; }
+.ti-cta__inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; align-items: center; position: relative; }
+.ti-cta__image { flex: 0 0 38%; position: relative; }
+.ti-cta__image img.ti-cta__bowl { width: 100%; display: block; }
+.ti-cta__image img.ti-cta__spoon {
+	position: absolute;
+	width: 55%;
+	top: -18%;
+	left: 28%;
+	transform: rotate(-8deg);
+}
+.ti-cta__heading { font-size: clamp(30px, 5vw, 50px); margin-bottom: 22px; color: var(--ti-navy); }
+.ti-cta__heading .ti-script { color: var(--ti-pink); font-size: 1.6em; display: block; line-height: 1; }
+.ti-cta__heading .ti-cta__line2 { color: var(--ti-pink); display: block; }
+.ti-cta__truck {
+	position: absolute;
+	left: 0;
+	bottom: -40px;
+	width: 130px;
+}
 @media (max-width: 749px) {
 	.ti-cta__inner { flex-direction: column; text-align: center; }
+	.ti-cta__truck { display: none; }
 }
 
 /* ================= Join the Family (newsletter) ================= */
-.ti-newsletter { background: var(--ti-magenta); padding: 56px 20px; text-align: center; }
+.ti-newsletter { background: var(--ti-cyan); padding: 56px 20px; text-align: center; }
 .ti-newsletter__heading { font-size: clamp(28px, 4vw, 42px); color: #ffdfc8; margin-bottom: 14px; }
-.ti-newsletter__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-newsletter__heading .ti-script {
+	background: var(--ti-blue);
+	color: #fff;
+	padding: 0.05em 0.35em;
+	border-radius: 6px;
+	transform: rotate(-2deg);
+}
 .ti-newsletter__text { font-family: var(--ti-font-body); color: #eaeaea; margin-bottom: 26px; }
 .ti-newsletter__form { display: flex; max-width: 480px; margin: 0 auto; gap: 0; }
 .ti-newsletter__form input {
@@ -393,8 +477,19 @@
 	color: var(--ti-yellow);
 	text-transform: uppercase;
 }
-.ti-footer-truck {
+.ti-footer-logo {
+	font-family: var(--ti-font-display);
+	color: var(--ti-yellow);
+	font-size: 32px;
+	line-height: 1;
 	display: block;
-	max-width: 160px;
-	margin: 0 0 16px;
+	margin-bottom: 8px;
+}
+.ti-footer-tagline {
+	font-family: var(--ti-font-label);
+	font-size: 11px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--ti-cream-text);
+	margin-bottom: 16px;
 }

@@ -1,52 +1,23 @@
 {{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
-<div class="ti-badge-row" style="background:{{ section.settings.color_bg }}; color:{{ section.settings.color_text }};">
-	<div class="ti-badge-row__inner">
-		{%- for block in section.blocks -%}
-			<div class="ti-badge-row__item" {{ block.shopify_attributes }}>
-				<div class="ti-badge-row__icon">
-					{%- render 'svg-icons-inline', icon: block.settings.icon -%}
-				</div>
-				<div class="ti-badge-row__label">{{ block.settings.label }}</div>
-			</div>
-		{%- endfor -%}
-	</div>
+<div class="ti-badge-row-img">
+	<img src="{{ section.settings.image | asset_url }}" alt="{{ section.settings.alt }}" loading="lazy">
 </div>
 {% schema %}
 {
-	"name": "TI: Trust badge row",
+	"name": "TI: Badge row (image)",
 	"settings": [
-		{ "type": "color", "id": "color_bg", "label": "Background", "default": "#2f2951" },
-		{ "type": "color", "id": "color_text", "label": "Text", "default": "#fcede1" }
-	],
-	"blocks": [
 		{
-			"type": "badge",
-			"name": "Badge",
-			"settings": [
-				{
-					"type": "select",
-					"id": "icon",
-					"label": "Icon",
-					"default": "fire",
-					"options": [
-						{ "value": "fire", "label": "Fire" },
-						{ "value": "leaf", "label": "Leaf" },
-						{ "value": "heart", "label": "Heart" },
-						{ "value": "check_mark", "label": "Check mark" },
-						{ "value": "map_pin", "label": "Map pin" },
-						{ "value": "stopwatch", "label": "Stopwatch" }
-					]
-				},
-				{ "type": "text", "id": "label", "label": "Label", "default": "Bold Flavours" }
+			"type": "select",
+			"id": "image",
+			"label": "Image",
+			"default": "ti-badges-row1.png",
+			"options": [
+				{ "value": "ti-badges-row1.png", "label": "Row 1: Bold Flavours" },
+				{ "value": "ti-badges-row2.png", "label": "Row 2: Scratch with Love" }
 			]
-		}
+		},
+		{ "type": "text", "id": "alt", "label": "Alt text", "default": "Bold Flavours, Simple Ingredients, Handmade in India" }
 	],
-	"max_blocks": 3,
-	"presets": [
-		{
-			"name": "TI: Trust badge row",
-			"blocks": [{ "type": "badge" }, { "type": "badge" }, { "type": "badge" }]
-		}
-	]
+	"presets": [{ "name": "TI: Badge row (image)" }]
 }
 {% endschema %}

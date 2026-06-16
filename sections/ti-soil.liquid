@@ -1,12 +1,11 @@
 {{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
 <div class="ti-soil">
 	<div class="ti-soil__inner">
-		<h2 class="ti-soil__heading ti-headline">{{ section.settings.heading_line1 }}<br><span class="ti-script">{{ section.settings.heading_script }}</span></h2>
-		<div class="ti-soil__photos">
-			<img src="{{ 'ti-farmer-1.jpg' | asset_url }}" alt="Farmer in the field" loading="lazy">
-			<img src="{{ 'ti-farmer-2.jpg' | asset_url }}" alt="Farmer harvesting" loading="lazy">
-			<img src="{{ 'ti-farmer-3.jpg' | asset_url }}" alt="Hand-packed in our kitchen" loading="lazy">
-			<img src="{{ 'ti-farmer-4.jpg' | asset_url }}" alt="Farmer with fresh produce" loading="lazy">
+		<h2 class="ti-soil__heading ti-headline">{{ section.settings.heading_line1 }}<br><span class="ti-script ti-script--badge">{{ section.settings.heading_script }}</span></h2>
+		<div class="ti-soil__photo-wrap">
+			<img class="ti-soil__icon" src="{{ 'ti-samosa-illustration.png' | asset_url }}" alt="" loading="lazy">
+			<img class="ti-soil__main-photo" src="{{ 'ti-farmer-1.jpg' | asset_url }}" alt="Farmer harvesting fresh produce" loading="lazy">
+			<div class="ti-soil__tag">Taste the<span class="ti-script">real</span>India</div>
 		</div>
 		{%- if section.settings.button_text != blank -%}
 			<a class="ti-soil__btn" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>

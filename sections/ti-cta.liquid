@@ -2,15 +2,17 @@
 <div class="ti-cta">
 	<div class="ti-cta__inner">
 		<div class="ti-cta__image">
-			<img src="{{ 'ti-cta-rajma-bowl.jpg' | asset_url }}" alt="Truly Indian dish" loading="lazy">
+			<img class="ti-cta__bowl" src="{{ 'ti-cta-rajma-bowl.jpg' | asset_url }}" alt="Truly Indian dish" loading="lazy">
+			<img class="ti-cta__spoon" src="{{ 'ti-cta-spoon.jpg' | asset_url }}" alt="" loading="lazy">
 		</div>
 		<div>
-			<h2 class="ti-cta__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span><br>{{ section.settings.heading_line2 }}</h2>
+			<h2 class="ti-cta__heading ti-headline">{{ section.settings.heading_line1 }}<span class="ti-script">{{ section.settings.heading_script }}</span><span class="ti-cta__line2">{{ section.settings.heading_line2 }}</span></h2>
 			{%- if section.settings.button_text != blank -%}
 				<a class="ti-btn ti-btn--red" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
 			{%- endif -%}
 		</div>
 	</div>
+	<img class="ti-cta__truck" src="{{ 'ti-footer-truck.png' | asset_url }}" alt="" loading="lazy">
 </div>
 {% schema %}
 {

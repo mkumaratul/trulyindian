@@ -10,7 +10,7 @@
           "settings": {
             "column_size": "large",
             "title": "",
-            "custom_liquid": "<img src=\"{{ 'ti-footer-truck.png' | asset_url }}\" alt=\"Truly Indian\" class=\"ti-footer-truck\" loading=\"lazy\">"
+            "custom_liquid": "<span class=\"ti-footer-logo\">Truly Indian</span><p class=\"ti-footer-tagline\">Bold Flavors &bull; Simple Ingredients &bull; Handmade with Love</p>"
           }
         },
         "social": {

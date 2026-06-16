@@ -2,18 +2,18 @@
 <div class="ti-awards">
 	<div class="ti-awards__inner">
 		<div class="ti-awards__text">
-			<h2 class="ti-awards__heading ti-headline"><span class="ti-script">{{ section.settings.heading_script }}</span> {{ section.settings.heading_line1 }}</h2>
+			<h2 class="ti-awards__heading ti-headline"><span class="ti-script">{{ section.settings.heading_script }}</span><br>{{ section.settings.heading_line1 }}</h2>
 			<p class="ti-awards__copy ti-body">{{ section.settings.copy }}</p>
 			<div class="ti-awards__badges">
 				<img src="{{ 'ti-badge-freezies.png' | asset_url }}" alt="Freezies Awards 2026" loading="lazy">
-				<img src="{{ 'ti-badge-nexty.png' | asset_url }}" alt="NEXTY Awards 2026 Winner" loading="lazy">
 				<img src="{{ 'ti-badge-editors-picks.png' | asset_url }}" alt="2026 Editors' Picks Winner" loading="lazy">
+				<img src="{{ 'ti-badge-nexty.png' | asset_url }}" alt="NEXTY Awards 2026 Winner" loading="lazy">
 			</div>
 		</div>
 		<div class="ti-awards__carousel">
-			<img src="{{ 'ti-awards-celebration.jpg' | asset_url }}" alt="2026 NEXTY Awards celebration" loading="lazy">
-			<img class="ti-awards__arrow ti-awards__arrow--prev" src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Previous">
-			<img class="ti-awards__arrow ti-awards__arrow--next" src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Next">
+			<img class="ti-awards__photo" src="{{ 'ti-awards-celebration.jpg' | asset_url }}" alt="2026 NEXTY Awards celebration" loading="lazy">
+			<span class="ti-awards__arrow ti-awards__arrow--prev"><img src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Previous"></span>
+			<span class="ti-awards__arrow ti-awards__arrow--next"><img src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Next"></span>
 		</div>
 	</div>
 </div>
