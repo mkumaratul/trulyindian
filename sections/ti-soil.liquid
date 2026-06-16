@@ -1,0 +1,27 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-soil">
+	<div class="ti-soil__inner">
+		<h2 class="ti-soil__heading ti-headline">{{ section.settings.heading_line1 }}<br><span class="ti-script">{{ section.settings.heading_script }}</span></h2>
+		<div class="ti-soil__photos">
+			<img src="{{ 'ti-farmer-1.jpg' | asset_url }}" alt="Farmer in the field" loading="lazy">
+			<img src="{{ 'ti-farmer-2.jpg' | asset_url }}" alt="Farmer harvesting" loading="lazy">
+			<img src="{{ 'ti-farmer-3.jpg' | asset_url }}" alt="Hand-packed in our kitchen" loading="lazy">
+			<img src="{{ 'ti-farmer-4.jpg' | asset_url }}" alt="Farmer with fresh produce" loading="lazy">
+		</div>
+		{%- if section.settings.button_text != blank -%}
+			<a class="ti-soil__btn" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+		{%- endif -%}
+	</div>
+</div>
+{% schema %}
+{
+	"name": "TI: Soil",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "Trace It Back" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "to the Soil" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "Know More" },
+		{ "type": "url", "id": "button_link", "label": "Button link" }
+	],
+	"presets": [{ "name": "TI: Soil" }]
+}
+{% endschema %}

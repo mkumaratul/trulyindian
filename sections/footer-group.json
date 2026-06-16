@@ -5,64 +5,58 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "text-1": {
-          "type": "text",
+        "brand": {
+          "type": "custom_liquid",
           "settings": {
             "column_size": "large",
             "title": "",
-            "text": "<p>Truly Indian – Simple ingredients, handmade in India.</p>",
-            "text_size": "medium",
-            "show_social_links": true
+            "custom_liquid": "<img src=\"{{ 'ti-footer-truck.png' | asset_url }}\" alt=\"Truly Indian\" class=\"ti-footer-truck\" loading=\"lazy\">"
           }
         },
-        "menu-1": {
-          "type": "menu",
+        "social": {
+          "type": "social",
           "settings": {
             "column_size": "small",
-            "title": "SHOP",
-            "menu": "main-menu"
+            "title": ""
           }
         },
-        "menu-2": {
-          "type": "menu",
+        "shop": {
+          "type": "custom_liquid",
+          "settings": {
+            "column_size": "medium",
+            "title": "SHOP",
+            "custom_liquid": "<div style=\"display:flex;gap:24px;\"><ul class=\"thb-widget-menu\"><li><a href=\"#\">Shop all</a></li><li><a href=\"#\">Samosas</a></li><li><a href=\"#\">Naan</a></li><li><a href=\"#\">Roti Wraps</a></li></ul><ul class=\"thb-widget-menu\"><li><a href=\"#\">Frozen Plant-based</a></li><li><a href=\"#\">Cooking Sauces</a></li><li><a href=\"#\">Vegan Entrees</a></li><li><a href=\"#\">Vegan Flavored Rice</a></li></ul></div>"
+          }
+        },
+        "discover": {
+          "type": "custom_liquid",
           "settings": {
             "column_size": "small",
             "title": "DISCOVER",
-            "menu": "footer"
+            "custom_liquid": "<ul class=\"thb-widget-menu\"><li><a href=\"#\">About Us</a></li><li><a href=\"#\">Recipes</a></li><li><a href=\"#\">Where to Buy</a></li><li><a href=\"#\">Our Promise</a></li></ul>"
           }
         },
-        "menu-3": {
-          "type": "menu",
+        "support": {
+          "type": "custom_liquid",
           "settings": {
             "column_size": "small",
-            "title": "SUPPORT",
-            "menu": "support"
-          }
-        },
-        "text-2": {
-          "type": "text",
-          "settings": {
-            "column_size": "small",
-            "title": "CONTACT",
-            "text": "<p>hello@trulyindian.com</p>",
-            "text_size": "medium",
-            "button_text": "",
-            "show_social_links": false
+            "title": "Support",
+            "custom_liquid": "<ul class=\"thb-widget-menu\"><li><a href=\"#\">Contact Us</a></li><li><a href=\"#\">Privacy Policy</a></li><li><a href=\"#\">Terms Of Use</a></li><li><a href=\"#\">Product Return Policy</a></li></ul>"
           }
         }
       },
       "block_order": [
-        "text-1",
-        "menu-1",
-        "menu-2",
-        "menu-3",
-        "text-2"
+        "brand",
+        "social",
+        "shop",
+        "discover",
+        "support"
       ],
       "settings": {
         "full_width": true,
         "copyright_text": "All rights reserved.",
-        "show_language_switcher": true,
-        "show_currency_switcher": true,
+        "show_language_switcher": false,
+        "show_currency_switcher": false,
         "show_payment_icons": true
       }
     }

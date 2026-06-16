@@ -1,9 +1,10 @@
 /* Truly Indian — homepage redesign
-   Brand tokens + per-section styling. Sections are targeted via an
-   "ends with" attribute selector on their Shopify-assigned wrapper id
-   (id="shopify-section-template--N__<id>"), with the ids set
-   deliberately in templates/index.json so this file can stay decoupled
-   from the section .liquid files themselves. */
+   Colors, fonts and copy are pulled directly from the Figma source file
+   (file 01qDyfVSxTY5fd3rS7woEZ, node 788:18 "Final Page"). Fonts actually
+   used in the design (HandDeco, Brushberry, Brushberry SansTwo, Futura PT)
+   aren't licensed/available to us, so close substitutes are used:
+   HandDeco -> Decofree (brand-supplied), Brushberry -> Caveat,
+   Brushberry SansTwo -> Oswald, Futura PT -> Poppins. */
 
 @font-face {
 	font-family: 'Decofree';
@@ -14,128 +15,207 @@
 }
 
 :root {
-	--ti-red: #d6293a;
-	--ti-red-dark: #b81e2d;
+	/* exact hex values sampled from the Figma fills */
+	--ti-red: #e53b2e;
+	--ti-header-red: #d02030;
+	--ti-header-red-dark: #c91725;
 	--ti-yellow: #ffc211;
-	--ti-navy: #16204a;
-	--ti-cream: #fdf1e1;
-	--ti-gold: #f0a93b;
-	--ti-blue: #1f3fae;
-	--ti-orange: #e8542e;
-	--ti-peach: #f3dcc4;
-	--ti-pink: #e8166f;
-	--ti-magenta: #d6167a;
-	--ti-teal: #1ea6a6;
+	--ti-yellow-2: #fec215;
+	--ti-navy: #2f2951;
+	--ti-navy-2: #2b214e;
+	--ti-blue: #0047ba;
+	--ti-blue-2: #2b51a3;
+	--ti-blue-3: #2c50a1;
+	--ti-cyan: #00a9c4;
+	--ti-cream: #fcede1;
+	--ti-cream-2: #fdf1e1;
+	--ti-cream-text: #f2c9ad;
+	--ti-orange: #e46b17;
+	--ti-terracotta: #e16d2c;
+	--ti-burnt-orange: #ef6d23;
+	--ti-magenta: #eb3986;
+	--ti-magenta-2: #e32880;
+	--ti-pink: #e2207c;
+	--ti-dark-text: #3f2021;
 	--ti-ink: #151515;
 
 	--ti-font-display: 'Decofree', 'Archivo Narrow', sans-serif;
 	--ti-font-script: 'Caveat', cursive;
+	--ti-font-label: 'Oswald', sans-serif;
+	--ti-font-body: 'Poppins', sans-serif;
 }
 
 .ti-headline {
 	font-family: var(--ti-font-display);
 	font-weight: normal;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.01em;
 	line-height: 1.05;
-	text-transform: uppercase;
 }
 
-.ti-headline .ti-script,
 .ti-script {
+	display: inline-block;
 	font-family: var(--ti-font-script);
-	text-transform: none;
+	font-weight: 700;
 	letter-spacing: 0;
+	text-transform: none;
+	padding: 0.05em 0.4em;
+	border-radius: 8px;
+	transform: rotate(-2deg);
 }
 
-/* ---------- Header CTA buttons (style3) ---------- */
-.header-ctas {
-	display: flex;
+.ti-label {
+	font-family: var(--ti-font-label);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.ti-body {
+	font-family: var(--ti-font-body);
+}
+
+.ti-btn {
+	display: inline-flex;
 	align-items: center;
-	gap: 10px;
+	justify-content: center;
+	font-family: var(--ti-font-body);
+	font-weight: 600;
+	font-size: 15px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	padding: 13px 28px;
+	border-radius: 4px;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
 }
 
+.ti-btn--yellow { background: var(--ti-yellow); color: var(--ti-dark-text); }
+.ti-btn--navy { background: var(--ti-navy-2); color: var(--ti-yellow); }
+.ti-btn--red { background: var(--ti-header-red); color: var(--ti-yellow-2); }
+
+/* ---------- Header CTA buttons ---------- */
+.header-ctas { display: flex; align-items: center; gap: 10px; }
 .header-cta {
 	white-space: nowrap;
+	font-family: var(--ti-font-body);
 	font-size: 12px;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: 0.04em;
+	text-transform: uppercase;
 	padding: 9px 16px;
 	border-radius: 4px;
 	text-decoration: none;
 }
+.header-cta--navy { background: var(--ti-navy-2); color: var(--ti-yellow); }
+.header-cta--yellow { background: var(--ti-yellow); color: var(--ti-dark-text); }
 
-.header-cta--outline {
-	border: 1px solid currentColor;
-	color: inherit;
+/* ================= Hero ================= */
+.ti-hero {
+	position: relative;
+	background: var(--ti-red);
+	color: #fffbf0;
+	text-align: center;
+	padding: 50px 20px 60px;
+	overflow: hidden;
 }
-
-.header-cta--solid {
-	background: var(--ti-yellow);
-	color: var(--ti-ink);
+.ti-hero__image {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto 30px;
+	display: block;
 }
-
-/* ---------- Hero ---------- */
-[id$="__ti-hero"] .slideshow__heading,
-[id$="__ti-hero"] h1 {
-	font-family: var(--ti-font-display);
+.ti-hero__heading {
+	font-size: clamp(34px, 6vw, 64px);
+	color: #fffbf0;
 }
-
-[id$="__ti-hero"] .ti-script {
-	display: inline-block;
+.ti-hero__heading .ti-script {
 	background: var(--ti-blue);
-	color: #fff;
-	padding: 0.05em 0.35em;
-	border-radius: 6px;
-	transform: rotate(-2deg);
+	color: #ffc31c;
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
 }
+.ti-hero__cta { margin-top: 24px; }
 
-/* ---------- Trust badge strips ---------- */
-[id$="__ti-badges-1"],
-[id$="__ti-badges-2"] {
-	padding-top: 28px;
-	padding-bottom: 28px;
+/* ================= Trust badge row ================= */
+.ti-badge-row {
+	padding: 36px 20px;
 }
-
-[id$="__ti-badges-1"] .text-with-icons__icon,
-[id$="__ti-badges-2"] .text-with-icons__icon {
-	border-radius: 50%;
-	background: #fff;
+.ti-badge-row__inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	text-align: center;
+}
+.ti-badge-row__icon {
 	width: 64px;
 	height: 64px;
+	margin: 0 auto 12px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.15);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-inline: auto;
-	box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
 }
-
-[id$="__ti-badges-1"] .text-with-icons__icon svg,
-[id$="__ti-badges-2"] .text-with-icons__icon svg {
-	width: 28px;
-	height: 28px;
-}
-
-[id$="__ti-badges-1"] h6,
-[id$="__ti-badges-2"] h6 {
-	font-family: var(--ti-font-display);
-	text-transform: uppercase;
-	letter-spacing: 0.03em;
-	margin-top: 10px;
-}
-
-/* ---------- Explore Authentic Flavors ---------- */
-[id$="__ti-explore"] .section-header h2 {
-	font-family: var(--ti-font-display);
+.ti-badge-row__icon svg { width: 30px; height: 30px; fill: currentColor; }
+.ti-badge-row__label {
+	font-family: var(--ti-font-label);
+	font-size: 18px;
+	font-weight: 600;
 	text-transform: uppercase;
 }
+@media (max-width: 749px) {
+	.ti-badge-row__inner { grid-template-columns: 1fr; gap: 28px; }
+}
 
-/* ---------- Trace It Back to the Soil ---------- */
-[id$="__ti-soil"] {
+/* ================= Explore Authentic Flavors ================= */
+.ti-explore { background: var(--ti-cream); padding: 60px 20px; }
+.ti-explore__inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 40px; align-items: flex-start; }
+.ti-explore__main { flex: 1 1 60%; }
+.ti-explore__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-pink); margin-bottom: 24px; }
+.ti-explore__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-explore__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+	margin-bottom: 28px;
+}
+.ti-explore__card { text-align: center; }
+.ti-explore__card img {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 6px;
+	background: #d9d9d9;
+	margin-bottom: 10px;
+}
+.ti-explore__card span {
+	font-family: var(--ti-font-body);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #633f26;
+}
+.ti-explore__promo { flex: 0 0 32%; }
+.ti-explore__promo img { width: 100%; border-radius: 10px; display: block; }
+@media (max-width: 899px) {
+	.ti-explore__inner { flex-direction: column; }
+	.ti-explore__grid { grid-template-columns: repeat(2, 1fr); }
+	.ti-explore__promo { flex: 1 1 auto; max-width: 320px; margin: 0 auto; }
+}
+
+/* ================= Trace It Back to the Soil ================= */
+.ti-soil {
 	position: relative;
+	background: var(--ti-orange);
+	color: var(--ti-navy);
+	padding: 70px 20px;
 	overflow: hidden;
+	text-align: center;
 }
-
-[id$="__ti-soil"]::before {
+.ti-soil::before {
 	content: 'FARM';
 	position: absolute;
 	left: 50%;
@@ -143,94 +223,178 @@
 	transform: translate(-50%, -50%);
 	font-family: var(--ti-font-display);
 	font-size: 18vw;
-	color: rgba(255, 255, 255, 0.18);
+	color: rgba(255, 255, 255, 0.15);
 	white-space: nowrap;
 	pointer-events: none;
 	z-index: 0;
 }
-
-[id$="__ti-soil"] .image-with-text-overlay--content {
-	position: relative;
-	z-index: 1;
-}
-
-[id$="__ti-soil"] .image-with-text-overlay--heading {
+.ti-soil__inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; }
+.ti-soil__heading { font-size: clamp(28px, 4vw, 46px); margin-bottom: 28px; }
+.ti-soil__heading .ti-script {
+	background: var(--ti-blue-2);
+	color: var(--ti-yellow);
 	font-family: var(--ti-font-display);
-	text-transform: uppercase;
 }
-
-/* ---------- Loved by All ---------- */
-[id$="__ti-loved"] .testimonials__author {
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
-	font-weight: 700;
+.ti-soil__photos {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-bottom: 30px;
 }
-
-/* ---------- A Dash of Salt (recipes) ---------- */
-[id$="__ti-recipes"] {
-	position: relative;
-	background: var(--ti-orange);
-	padding-top: 60px;
-	padding-bottom: 60px;
+.ti-soil__photos img {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 4px solid #fff;
 }
-
-[id$="__ti-recipes"] .section-header h2,
-[id$="__ti-recipes"] .section-header .text-button {
-	color: #fff;
+@media (max-width: 749px) {
+	.ti-soil__photos { grid-template-columns: repeat(2, 1fr); }
 }
-
-[id$="__ti-recipes"] .section-header h2 {
-	font-family: var(--ti-font-display);
-	text-transform: uppercase;
-}
-
-[id$="__ti-recipes"] .blog-post {
+.ti-soil__btn {
+	font-family: var(--ti-font-label);
+	color: var(--ti-blue-2);
 	background: #fff;
-	padding: 14px 14px 20px;
+	border-radius: 50px;
+	padding: 14px 30px;
+	text-decoration: none;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	display: inline-block;
+}
+
+/* ================= Loved by All ================= */
+.ti-loved {
+	position: relative;
+	background: var(--ti-blue-3);
+	color: var(--ti-cream);
+	padding: 70px 20px;
+	text-align: center;
+	overflow: hidden;
+}
+.ti-loved__bg {
+	position: absolute;
+	inset: 0;
+	opacity: 0.18;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+.ti-loved__inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.ti-loved__heading { font-size: clamp(28px, 4vw, 42px); margin-bottom: 22px; }
+.ti-loved__heading .ti-script { background: var(--ti-yellow); color: var(--ti-blue-3); }
+.ti-loved__stars { display: flex; justify-content: center; gap: 6px; margin-bottom: 24px; }
+.ti-loved__stars svg { width: 26px; height: 26px; fill: var(--ti-yellow); background: #fff; border-radius: 50%; padding: 4px; }
+.ti-loved__quote { font-family: var(--ti-font-display); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.4; margin-bottom: 20px; }
+.ti-loved__author { font-family: var(--ti-font-label); color: #fff; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 16px; }
+.ti-loved__amazon { height: 24px; opacity: 0.9; }
+
+/* ================= A Dash of Salt (recipes) ================= */
+.ti-recipes { background: var(--ti-terracotta); padding: 60px 20px; text-align: center; }
+.ti-recipes__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-cream); margin-bottom: 36px; }
+.ti-recipes__heading .ti-script { background: var(--ti-magenta); color: #fff; }
+.ti-recipes__grid {
+	max-width: 1100px;
+	margin: 0 auto 30px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+.ti-recipe-card {
+	background-size: cover;
+	background-position: center;
 	border-radius: 4px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-	transform: rotate(-1.5deg);
+	padding: 16px 16px 24px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	transform: rotate(-1.2deg);
 }
-
-[id$="__ti-recipes"] .row > div:nth-child(2) .blog-post {
-	transform: rotate(1.5deg);
-}
-
-[id$="__ti-recipes"] .blog-post h5 a {
-	font-family: var(--ti-font-display);
+.ti-recipe-card:nth-child(2) { transform: rotate(1deg); }
+.ti-recipe-card:nth-child(3) { transform: rotate(-0.6deg); }
+.ti-recipe-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; margin-bottom: 14px; }
+.ti-recipe-card h3 {
+	font-family: var(--ti-font-label);
+	color: var(--ti-pink);
+	font-size: 20px;
+	margin-bottom: 14px;
 	text-transform: uppercase;
 }
-
-/* ---------- Featured & How / Awards ---------- */
-[id$="__ti-awards-badges"] {
-	background: var(--ti-peach);
-	padding-top: 40px;
+@media (max-width: 899px) {
+	.ti-recipes__grid { grid-template-columns: 1fr; max-width: 360px; }
 }
 
-[id$="__ti-awards-badges"] .section-header h2 {
-	font-family: var(--ti-font-display);
+/* ================= Featured & How (awards) ================= */
+.ti-awards { background: var(--ti-terracotta); padding: 60px 20px; }
+.ti-awards__inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 50px; align-items: center; }
+.ti-awards__text { flex: 1 1 45%; }
+.ti-awards__heading { font-size: clamp(28px, 4vw, 44px); color: var(--ti-cream); margin-bottom: 18px; }
+.ti-awards__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-awards__copy { font-family: var(--ti-font-body); color: var(--ti-dark-text); margin-bottom: 24px; }
+.ti-awards__badges { display: flex; gap: 14px; flex-wrap: wrap; }
+.ti-awards__badges img { width: 70px; height: auto; }
+.ti-awards__carousel { flex: 1 1 45%; position: relative; }
+.ti-awards__carousel img { width: 100%; border-radius: 10px; display: block; }
+.ti-awards__arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+}
+.ti-awards__arrow--prev { left: -18px; transform: translateY(-50%) rotate(180deg); }
+.ti-awards__arrow--next { right: -18px; }
+@media (max-width: 899px) {
+	.ti-awards__inner { flex-direction: column; }
+}
+
+/* ================= Taste the Real India CTA ================= */
+.ti-cta { background: var(--ti-terracotta); padding: 60px 20px; }
+.ti-cta__inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; align-items: center; }
+.ti-cta__image { flex: 0 0 38%; }
+.ti-cta__image img { width: 100%; border-radius: 12px; display: block; }
+.ti-cta__heading { font-size: clamp(30px, 5vw, 50px); color: #fffbf0; margin-bottom: 22px; }
+.ti-cta__heading .ti-script { background: #fff; color: var(--ti-pink); }
+@media (max-width: 749px) {
+	.ti-cta__inner { flex-direction: column; text-align: center; }
+}
+
+/* ================= Join the Family (newsletter) ================= */
+.ti-newsletter { background: var(--ti-magenta); padding: 56px 20px; text-align: center; }
+.ti-newsletter__heading { font-size: clamp(28px, 4vw, 42px); color: #ffdfc8; margin-bottom: 14px; }
+.ti-newsletter__heading .ti-script { background: var(--ti-blue); color: #fff; }
+.ti-newsletter__text { font-family: var(--ti-font-body); color: #eaeaea; margin-bottom: 26px; }
+.ti-newsletter__form { display: flex; max-width: 480px; margin: 0 auto; gap: 0; }
+.ti-newsletter__form input {
+	flex: 1;
+	border: none;
+	border-radius: 4px 0 0 4px;
+	padding: 0 16px;
+	background: #fbeee5;
+	font-family: var(--ti-font-body);
+}
+.ti-newsletter__form button {
+	border: none;
+	border-radius: 0 4px 4px 0;
+	background: var(--ti-yellow-2);
+	color: var(--ti-dark-text);
+	font-family: var(--ti-font-body);
+	font-weight: 600;
 	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	padding: 0 26px;
+	cursor: pointer;
 }
 
-/* ---------- Taste the Real India CTA ---------- */
-[id$="__ti-cta"] h3,
-[id$="__ti-cta"] .image-with-text h3 {
-	font-family: var(--ti-font-display);
-	text-transform: uppercase;
-}
-
-/* ---------- Join the Family ---------- */
-[id$="__ti-newsletter"] .email-signup h2 {
-	font-family: var(--ti-font-display);
-	text-transform: uppercase;
-}
-
-/* ---------- Footer ---------- */
-#footer {
-	background: var(--ti-magenta);
-}
-
+/* ================= Footer ================= */
+#footer { background: var(--ti-magenta-2); color: var(--ti-cream-text); }
+#footer a { color: var(--ti-cream-text); }
+#footer a:hover { color: #fff; }
 #footer .thb-widget-title {
-	font-family: var(--ti-font-display);
+	font-family: var(--ti-font-label);
+	color: var(--ti-yellow);
 	text-transform: uppercase;
+}
+.ti-footer-truck {
+	display: block;
+	max-width: 160px;
+	margin: 0 0 16px;
 }

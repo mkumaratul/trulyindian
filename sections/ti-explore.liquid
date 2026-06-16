@@ -1,0 +1,71 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-explore">
+	<div class="ti-explore__inner">
+		<div class="ti-explore__main">
+			<h2 class="ti-explore__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span></h2>
+			<div class="ti-explore__grid">
+				{%- for block in section.blocks -%}
+					<a class="ti-explore__card" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+						<img src="{{ block.settings.image | default: 'ti-cat-rice.jpg' | asset_url }}" alt="{{ block.settings.label | escape }}" width="700" height="700" loading="lazy">
+						<span>{{ block.settings.label }}</span>
+					</a>
+				{%- endfor -%}
+			</div>
+			{%- if section.settings.button_text != blank -%}
+				<a class="ti-btn ti-btn--yellow" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+			{%- endif -%}
+		</div>
+		<div class="ti-explore__promo">
+			<img src="{{ 'ti-tote-bag-promo.jpg' | asset_url }}" alt="Truly Indian tote bag" width="1000" height="1250" loading="lazy">
+		</div>
+	</div>
+</div>
+{% schema %}
+{
+	"name": "TI: Explore Flavors",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "Explore Authentic" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "Flavors" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "View All Products" },
+		{ "type": "url", "id": "button_link", "label": "Button link" }
+	],
+	"blocks": [
+		{
+			"type": "category",
+			"name": "Category",
+			"settings": [
+				{ "type": "text", "id": "label", "label": "Label", "default": "Rice" },
+				{
+					"type": "select",
+					"id": "image",
+					"label": "Image",
+					"default": "ti-cat-rice.jpg",
+					"options": [
+						{ "value": "ti-cat-rice.jpg", "label": "Rice" },
+						{ "value": "ti-cat-wraps.jpg", "label": "Wraps" },
+						{ "value": "ti-cat-naans.jpg", "label": "Naans" },
+						{ "value": "ti-cat-chutneys.jpg", "label": "Chutneys" },
+						{ "value": "ti-cat-samosas.jpg", "label": "Samosas" },
+						{ "value": "ti-cat-readytoeat.jpg", "label": "Ready to Eats" }
+					]
+				},
+				{ "type": "url", "id": "link", "label": "Link" }
+			]
+		}
+	],
+	"max_blocks": 6,
+	"presets": [
+		{
+			"name": "TI: Explore Flavors",
+			"blocks": [
+				{ "type": "category", "settings": { "label": "Rice", "image": "ti-cat-rice.jpg" } },
+				{ "type": "category", "settings": { "label": "Wraps", "image": "ti-cat-wraps.jpg" } },
+				{ "type": "category", "settings": { "label": "Naans", "image": "ti-cat-naans.jpg" } },
+				{ "type": "category", "settings": { "label": "Chutneys", "image": "ti-cat-chutneys.jpg" } },
+				{ "type": "category", "settings": { "label": "Samosas", "image": "ti-cat-samosas.jpg" } },
+				{ "type": "category", "settings": { "label": "Ready to Eats", "image": "ti-cat-readytoeat.jpg" } }
+			]
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-loved">
+	<img class="ti-loved__bg" src="{{ 'ti-loved-bg.jpg' | asset_url }}" alt="" loading="lazy">
+	<div class="ti-loved__inner">
+		<h2 class="ti-loved__heading ti-headline"><span class="ti-script">{{ section.settings.heading_script }}</span> {{ section.settings.heading_line1 }}</h2>
+		<div class="ti-loved__stars">
+			{%- for i in (1..5) -%}
+				{%- render 'svg-icons-inline', icon: 'star' -%}
+			{%- endfor -%}
+		</div>
+		<p class="ti-loved__quote">&ldquo;{{ section.settings.quote }}&rdquo;</p>
+		<p class="ti-loved__author ti-label">{{ section.settings.author }}</p>
+		<img class="ti-loved__amazon" src="{{ 'ti-amazon-logo.png' | asset_url }}" alt="Amazon" loading="lazy">
+	</div>
+</div>
+{% schema %}
+{
+	"name": "TI: Loved by All",
+	"settings": [
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "Loved" },
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "By All!!" },
+		{ "type": "textarea", "id": "quote", "label": "Quote", "default": "The chutney reminds me of my grandma's cooking back home, crispy, flavorful, and not too spicy. My kids love them too!" },
+		{ "type": "text", "id": "author", "label": "Author", "default": "~ Priya S., New Jersey" }
+	],
+	"presets": [{ "name": "TI: Loved by All" }]
+}
+{% endschema %}

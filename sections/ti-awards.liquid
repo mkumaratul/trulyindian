@@ -1,0 +1,30 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-awards">
+	<div class="ti-awards__inner">
+		<div class="ti-awards__text">
+			<h2 class="ti-awards__heading ti-headline"><span class="ti-script">{{ section.settings.heading_script }}</span> {{ section.settings.heading_line1 }}</h2>
+			<p class="ti-awards__copy ti-body">{{ section.settings.copy }}</p>
+			<div class="ti-awards__badges">
+				<img src="{{ 'ti-badge-freezies.png' | asset_url }}" alt="Freezies Awards 2026" loading="lazy">
+				<img src="{{ 'ti-badge-nexty.png' | asset_url }}" alt="NEXTY Awards 2026 Winner" loading="lazy">
+				<img src="{{ 'ti-badge-editors-picks.png' | asset_url }}" alt="2026 Editors' Picks Winner" loading="lazy">
+			</div>
+		</div>
+		<div class="ti-awards__carousel">
+			<img src="{{ 'ti-awards-celebration.jpg' | asset_url }}" alt="2026 NEXTY Awards celebration" loading="lazy">
+			<img class="ti-awards__arrow ti-awards__arrow--prev" src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Previous">
+			<img class="ti-awards__arrow ti-awards__arrow--next" src="{{ 'ti-arrow-icon.png' | asset_url }}" alt="Next">
+		</div>
+	</div>
+</div>
+{% schema %}
+{
+	"name": "TI: Featured & How",
+	"settings": [
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "Featured" },
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "& How!" },
+		{ "type": "textarea", "id": "copy", "label": "Text", "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation." }
+	],
+	"presets": [{ "name": "TI: Featured & How" }]
+}
+{% endschema %}

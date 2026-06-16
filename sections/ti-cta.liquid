@@ -1,0 +1,27 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-cta">
+	<div class="ti-cta__inner">
+		<div class="ti-cta__image">
+			<img src="{{ 'ti-cta-rajma-bowl.jpg' | asset_url }}" alt="Truly Indian dish" loading="lazy">
+		</div>
+		<div>
+			<h2 class="ti-cta__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span><br>{{ section.settings.heading_line2 }}</h2>
+			{%- if section.settings.button_text != blank -%}
+				<a class="ti-btn ti-btn--red" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+{% schema %}
+{
+	"name": "TI: Taste the Real India",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading line 1", "default": "Taste the" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "real" },
+		{ "type": "text", "id": "heading_line2", "label": "Heading line 2", "default": "India" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "Buy Now" },
+		{ "type": "url", "id": "button_link", "label": "Button link" }
+	],
+	"presets": [{ "name": "TI: Taste the Real India" }]
+}
+{% endschema %}

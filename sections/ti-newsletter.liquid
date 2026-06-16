@@ -1,0 +1,22 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-newsletter">
+	<h2 class="ti-newsletter__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span></h2>
+	<p class="ti-newsletter__text ti-body">{{ section.settings.text }}</p>
+	{% form 'customer', class: 'ti-newsletter__form' %}
+		<input type="hidden" name="contact[tags]" value="newsletter">
+		<input type="email" name="contact[email]" placeholder="Email address" required value="{{ form.email }}">
+		<button type="submit">{{ section.settings.button_text | default: 'Submit' }}</button>
+	{% endform %}
+</div>
+{% schema %}
+{
+	"name": "TI: Join the Family",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "Join the" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "Family" },
+		{ "type": "text", "id": "text", "label": "Text", "default": "Be the first to get updates, coupons, and news from Truly Indian" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "Submit" }
+	],
+	"presets": [{ "name": "TI: Join the Family" }]
+}
+{% endschema %}

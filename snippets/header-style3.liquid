@@ -34,10 +34,10 @@
 {%- if header_settings.cta_button_1_text != blank or header_settings.cta_button_2_text != blank -%}
 <div class="header-ctas">
 	{%- if header_settings.cta_button_1_text != blank -%}
-		<a class="header-cta header-cta--outline" href="{{ header_settings.cta_button_1_link | default: '#' }}">{{ header_settings.cta_button_1_text }}</a>
+		<a class="header-cta header-cta--navy" href="{{ header_settings.cta_button_1_link | default: '#' }}">{{ header_settings.cta_button_1_text }}</a>
 	{%- endif -%}
 	{%- if header_settings.cta_button_2_text != blank -%}
-		<a class="header-cta header-cta--solid" href="{{ header_settings.cta_button_2_link | default: '#' }}">{{ header_settings.cta_button_2_text }}</a>
+		<a class="header-cta header-cta--yellow" href="{{ header_settings.cta_button_2_link | default: '#' }}">{{ header_settings.cta_button_2_text }}</a>
 	{%- endif -%}
 </div>
 {%- endif -%}

@@ -1,0 +1,59 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-recipes">
+	<h2 class="ti-recipes__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span></h2>
+	<div class="ti-recipes__grid">
+		{%- for block in section.blocks -%}
+			<div class="ti-recipe-card" style="background-image:url({{ 'ti-recipe-paper-bg.jpg' | asset_url }})" {{ block.shopify_attributes }}>
+				<img src="{{ block.settings.image | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+				<h3>{{ block.settings.title }}</h3>
+				<a class="ti-btn ti-btn--yellow" href="{{ block.settings.link | default: '#' }}">{{ block.settings.button_text | default: 'View Full Recipe' }}</a>
+			</div>
+		{%- endfor -%}
+	</div>
+	{%- if section.settings.button_text != blank -%}
+		<a class="ti-btn ti-btn--yellow" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+	{%- endif -%}
+</div>
+{% schema %}
+{
+	"name": "TI: Recipes",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "A Dash of Salt &" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "Truly Indian" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "View All Recipes" },
+		{ "type": "url", "id": "button_link", "label": "Button link" }
+	],
+	"blocks": [
+		{
+			"type": "recipe",
+			"name": "Recipe",
+			"settings": [
+				{ "type": "text", "id": "title", "label": "Title", "default": "Bombay Style Burrito Bowl" },
+				{
+					"type": "select",
+					"id": "image",
+					"label": "Photo",
+					"default": "ti-recipe-burrito-bowl.jpg",
+					"options": [
+						{ "value": "ti-recipe-burrito-bowl.jpg", "label": "Burrito Bowl" },
+						{ "value": "ti-recipe-naanchalant-pizza.jpg", "label": "Naanchalant Pizza" }
+					]
+				},
+				{ "type": "text", "id": "button_text", "label": "Button label", "default": "View Full Recipe" },
+				{ "type": "url", "id": "link", "label": "Link" }
+			]
+		}
+	],
+	"max_blocks": 3,
+	"presets": [
+		{
+			"name": "TI: Recipes",
+			"blocks": [
+				{ "type": "recipe", "settings": { "title": "Bombay Style Burrito Bowl", "image": "ti-recipe-burrito-bowl.jpg" } },
+				{ "type": "recipe", "settings": { "title": "Naanchalant Pizza", "image": "ti-recipe-naanchalant-pizza.jpg" } },
+				{ "type": "recipe", "settings": { "title": "Naanchalant Pizza", "image": "ti-recipe-naanchalant-pizza.jpg" } }
+			]
+		}
+	]
+}
+{% endschema %}

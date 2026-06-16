@@ -1,0 +1,22 @@
+{{ 'truly-indian-home.css' | asset_url | stylesheet_tag }}
+<div class="ti-hero">
+	<img class="ti-hero__image" src="{{ 'ti-hero-collage.jpg' | asset_url }}" alt="Truly Indian product packaging" width="1800" height="1461" loading="eager">
+	<h1 class="ti-hero__heading ti-headline">{{ section.settings.heading_line1 }} <span class="ti-script">{{ section.settings.heading_script }}</span></h1>
+	{%- if section.settings.button_text != blank -%}
+		<div class="ti-hero__cta">
+			<a class="ti-btn ti-btn--yellow" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+		</div>
+	{%- endif -%}
+</div>
+{% schema %}
+{
+	"name": "TI: Hero",
+	"settings": [
+		{ "type": "text", "id": "heading_line1", "label": "Heading", "default": "Made Fresh" },
+		{ "type": "text", "id": "heading_script", "label": "Script accent", "default": "in india" },
+		{ "type": "text", "id": "button_text", "label": "Button label", "default": "Take a Bite!" },
+		{ "type": "url", "id": "button_link", "label": "Button link" }
+	],
+	"presets": [{ "name": "TI: Hero" }]
+}
+{% endschema %}
