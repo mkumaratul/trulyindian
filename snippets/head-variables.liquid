@@ -1,0 +1,157 @@
+{%- liquid
+	assign heading_font = settings.heading_font
+	assign body_font = settings.body_font
+	assign body_font_500 = body_font | font_modify: 'weight', '500'
+
+	unless body_font_500
+		assign body_font_500 = body_font | font_modify: 'weight', '600'
+	endunless
+
+	assign body_font_bold = body_font | font_modify: 'weight', '600'
+	unless body_font_bold
+		assign body_font_bold = body_font | font_modify: 'weight', '700'
+	endunless
+
+	assign body_font_italic = body_font | font_modify: 'style', 'italic'
+	assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+-%}
+
+{% style %}
+	{{ body_font | font_face: font_display: 'swap' }}
+
+	{%- if body_font_500 -%}
+	  {{ body_font_500 | font_face: font_display: 'swap' }}
+	{%- endif -%}
+
+	{%- if body_font_bold -%}
+	  {{ body_font_bold | font_face: font_display: 'swap' }}
+	{%- endif -%}
+
+	{%- if body_font_italic -%}
+	  {{ body_font_italic | font_face: font_display: 'swap' }}
+	{%- endif -%}
+
+	{%- if body_font_bold_italic -%}
+	  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+	{%- endif -%}
+
+	{%- if body_font != heading_font -%}
+		{{ heading_font | font_face: font_display: 'swap' }}
+		{%- assign heading_font_400 = heading_font | font_modify: 'weight', '400' -%}
+
+		{%- if heading_font_400 -%}
+		  {{ heading_font_400 | font_face: font_display: 'swap' }}
+		{%- endif -%}
+	{%- endif -%}
+
+	h1,h2,h3,h4,h5,h6,
+	.h1,.h2,.h3,.h4,.h5,.h6,
+	.logolink.text-logo,
+	.heading-font,
+	.h1-xlarge,
+	.h1-large,
+	.customer-addresses .my-address .address-index {
+		font-style: {{ heading_font.style }};
+		font-weight: {{ heading_font.weight }};
+		font-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+	}
+	body,
+	.body-font,
+	.thb-product-detail .product-title {
+		font-style: {{ body_font.style }};
+		font-weight: {{ body_font.weight }};
+		font-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+	}
+	:root {
+		--mobile-swipe-width: calc(90vw - 30px);
+		--font-body-scale: {{ settings.body_font_scale | divided_by: 100.0 }};
+		--font-body-line-height-scale: {{ settings.body_font_line_height_scale | divided_by: 100.0 }};
+		--font-body-letter-spacing: {{ settings.body_font_letter_spacing | divided_by: 1000.0 }}em;
+		--font-body-medium-weight: {{ body_font_500.weight | default: '500' }};
+		--font-body-bold-weight: {{ body_font_bold.weight | default: '600' }};
+		--font-announcement-scale: {{ settings.announcement_font_scale | divided_by: 100.0 }};
+		--font-heading-scale: {{ settings.heading_font_scale | divided_by: 100.0 }};
+		--font-heading-line-height-scale: {{ settings.heading_font_line_height_scale | divided_by: 100.0 }};
+		--font-heading-letter-spacing: {{ settings.heading_font_letter_spacing | divided_by: 1000.0 }}em;
+		--font-navigation-scale: {{ settings.navigation_font_scale | divided_by: 100.0 }};
+		--navigation-item-spacing: {{ settings.navigation_item_spacing | divided_by: 2 }}px;
+		--font-product-title-scale: {{ settings.product_title_font_scale | divided_by: 100.0 }};
+		--font-product-title-line-height-scale: {{ settings.product_title_line_height_scale | divided_by: 100.0 }};
+		--button-letter-spacing: {{ settings.button_letter_spacing | divided_by: 1000.0 }}em;
+		--button-font-scale: {{ settings.button_font_scale | divided_by: 100.0 }};
+
+		--bg-body: {{ settings.color_body_bg | default: '#fff' }};
+		--bg-body-rgb: {{ settings.color_body_bg.rgb | default: '255 255 255' | replace: ' ' , ',' }};
+		--bg-body-darken: {{ settings.color_body_bg | default: '#fff' | color_darken: 3 }};
+		--payment-terms-background-color: {{ settings.color_body_bg | default: '#fff' }};
+		--color-body: {{ settings.color_body | default: '#151515' }};
+		--color-body-rgb: {{ settings.color_body.rgb | default: '21 21 21' | replace: ' ' , ',' }};
+		--color-accent: {{ settings.color_accent | default: '#151515' }};
+		--color-accent-rgb: {{ settings.color_accent.rgb | default: '21 21 21' | replace: ' ' , ',' }};
+		--color-border: {{ settings.color_border | default: '#e2e2e2' }};
+		--color-form-border: {{ settings.color_input_border | default: '#e2e2e2' }};
+		--color-overlay-rgb: {{ settings.color_overlay.rgb | default: '0 0 0' | replace: ' ' , ',' }};
+
+		--shopify-accelerated-checkout-button-block-size: 48px;
+		--shopify-accelerated-checkout-inline-alignment: center;
+		--shopify-accelerated-checkout-skeleton-animation-duration: 0.25s;
+
+		--color-announcement-bar-text: {{ settings.color_announcement_bar_text }};
+		--color-announcement-bar-bg: {{ settings.color_announcement_bar_bg }};
+
+		--color-header-bg: {{ settings.color_header_bg }};
+		--color-header-bg-rgb: {{ settings.color_header_bg.rgb | replace: ' ' , ',' }};
+		--color-header-text: {{ settings.color_header_text }};
+		--color-header-text-rgb: {{ settings.color_header_text.rgb | replace: ' ' , ',' }};
+		--color-header-links: {{ settings.color_header_links }};
+		--color-header-links-rgb: {{ settings.color_header_links.rgb | replace: ' ' , ',' }};
+		--color-header-links-hover: {{ settings.color_header_links_hover }};
+		--color-header-icons: {{ settings.color_header_icons }};
+		--color-header-border: {{ settings.color_header_border }};
+
+		--solid-button-background: {{ settings.solid_button_background }};
+		--solid-button-label: {{ settings.solid_button_label }};
+		--outline-button-label: {{ settings.outline_button_label }};
+		--button-border-radius: {{ settings.button_border_radius | append: 'px' }};
+		--shopify-accelerated-checkout-button-border-radius: {{ settings.button_border_radius | append: 'px' }};
+
+		--color-price: {{ settings.color_price }};
+		--color-price-discounted: {{ settings.color_price_discounted | default: '#6D6D6D' }};
+		--color-star: {{ settings.color_stars | default: '#fd9a52' }};
+		--color-dots: {{ settings.color_dots }};
+
+		--color-inventory-instock: {{ settings.color_inventory_instock }};
+		--color-inventory-lowstock: {{ settings.color_inventory_lowstock }};
+
+		--section-spacing-mobile: {{ settings.section_spacing_mobile | default: '50' | append: 'px' }};
+		--section-spacing-desktop: {{ settings.section_spacing_desktop | default: '100' | append: 'px' }};
+
+		--color-badge-text: {{ settings.color_badge_text }};
+		--color-badge-sold-out: {{ settings.color_badge_soldout }};
+		--color-badge-sale: {{ settings.color_badge_sale }};
+		--color-badge-preorder: {{ settings.color_badge_preorder }};
+		--badge-corner-radius: {{ settings.badge_corner_radius | append: 'px' }};
+
+		--color-footer-text: {{ settings.color_footer_text }};
+		--color-footer-text-rgb: {{ settings.color_footer_text.rgb | replace: ' ' , ',' }};
+		--color-footer-link: {{ settings.color_footer_link }};
+		--color-footer-link-hover: {{ settings.color_footer_link_hover }};
+		--color-footer-border: {{ settings.color_footer_border }};
+		--color-footer-border-rgb: {{ settings.color_footer_border.rgb | replace: ' ' , ',' }};
+		--color-footer-bg: {{ settings.color_footer_bg }};
+	}
+
+	{%- for index in (1..4) -%}
+		{%- assign badge_tag_key = 'custom_product_badge_group_' | append: index | append: '_tag_names' -%}
+		{%- assign badge_color_key = 'custom_product_badge_group_' | append: index | append: '_color' -%}
+		{%- unless settings[badge_tag_key] == blank -%}
+			{%- assign tags = settings[badge_tag_key] | downcase | split: ", " -%}
+			{%- for tag in tags -%}
+				.badge[data-badge="{{ tag | downcase | handleize }}"]{%- unless forloop.last -%},{%- endunless -%}
+			{%- endfor -%}
+			{
+				background: {{ settings[badge_color_key] }};
+			}
+		{% endunless %}
+	{%- endfor -%}
+{% endstyle %}

@@ -1,0 +1,82 @@
+{
+  "type": "header",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "column_size": "large",
+            "title": "",
+            "text": "<p></p>",
+            "text_size": "medium",
+            "show_social_links": true
+          }
+        },
+        "text-2": {
+          "type": "text",
+          "settings": {
+            "column_size": "large",
+            "title": "",
+            "text": "<p>8212 E. Glen Creek Street Orchard Park, NY 14127,<br/>United States of America</p>",
+            "text_size": "large",
+            "button_text": "Show on google maps",
+            "show_social_links": false
+          }
+        },
+        "menu-1": {
+          "type": "menu",
+          "settings": {
+            "column_size": "medium",
+            "title": "COMPANY",
+            "menu": "company"
+          }
+        },
+        "menu-2": {
+          "type": "menu",
+          "settings": {
+            "column_size": "medium",
+            "title": "RESOURCES",
+            "menu": "resources"
+          }
+        },
+        "menu-3": {
+          "type": "menu",
+          "settings": {
+            "column_size": "medium",
+            "title": "SUPPORT",
+            "menu": "support"
+          }
+        },
+        "signup": {
+          "type": "signup",
+          "settings": {
+            "column_size": "medium",
+            "title": "NEWSLETTER",
+            "text": "<p>Sign up for our newsletter and receive 10% off your first order!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text-1",
+        "text-2",
+        "menu-1",
+        "menu-2",
+        "menu-3",
+        "signup"
+      ],
+      "settings": {
+        "full_width": true,
+        "copyright_text": "All rights reserved.",
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,61 @@
+<style>
+.section-breadcrumbs+.product-section .thb-product-detail{margin-top:0}
+.breadcrumbs{font-size:0.75rem;overflow-x:auto;padding:15px;display:inline-flex;width:100%;white-space:nowrap;max-width:100vw;text-align:center}
+@media only screen and (min-width:768px){.breadcrumbs{padding:20px 50px;overflow-x:hidden}}
+.breadcrumbs i{opacity:0.2;display:inline-block;margin:0 8px}
+.breadcrumbs a{text-decoration:underline;text-underline-offset:3px}
+</style>
+<scroll-shadow>
+	<nav class="breadcrumbs" aria-label="breadcrumbs">
+	  <a href="{{ routes.root_url }}" title="{{ 'sections.breadcrumbs.home' | t | escape }}">{{ 'sections.breadcrumbs.home' | t }}</a>
+	  {% if collection.url %}
+			<i>/</i>
+			<a href="{{ routes.all_products_collection_url }}" title="{{ 'sections.breadcrumbs.shop' | t | escape }}">{{ 'sections.breadcrumbs.shop' | t }}</a>
+	    <i>/</i>
+	    <a href="{{ collection.url }}" title="{{ collection.title | escape }}">{{ collection.title }}</a>
+	  {% endif %}
+		{% if template contains 'cart' %}
+	    <i>/</i>
+	    {{ 'sections.breadcrumbs.cart' | t }}
+	  {% endif %}
+	  {% if template contains 'product' %}
+	    <i>/</i>
+	    {{ product.title }}
+	  {% endif %}
+	  {% if template contains 'blog' %}
+			{% if current_tags %}
+				<i>/</i>
+		    <a href="{{ blog.url }}" title="{{ blog.title | escape }}">{{ blog.title }}</a>
+				<i>/</i>
+				{{ current_tags }}
+			{% else %}
+				<i>/</i>
+				{{ blog.title }}
+			{% endif %}
+	  {% endif %}
+		{% if template contains 'article' %}
+	    <i>/</i>
+	    <a href="{{ blog.url }}" title="{{ blog.title | escape }}">{{ blog.title }}</a>
+	    <i>/</i>
+	    {{ article.title }}
+	  {% endif %}
+	  {% if template contains 'page' %}
+	    <i>/</i>
+	    {{ page.title }}
+	  {% endif %}
+		{% if template contains 'search' %}
+	    <i>/</i>
+	    {{ 'sections.breadcrumbs.search' | t }}
+	  {% endif %}
+		{% if template contains 'customers' %}
+	    <i>/</i>
+	    {{ 'sections.breadcrumbs.my_account' | t }}
+	  {% endif %}
+	</nav>
+</scroll-shadow>
+{% schema %}
+{
+	"name": "Breadcrumbs",
+	"class": "section-breadcrumbs"
+}
+{% endschema %}

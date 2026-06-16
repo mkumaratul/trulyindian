@@ -1,0 +1,36 @@
+{%- liquid
+	if customer
+  	assign profile_link = routes.account_url
+		assign profile_text = 'sections.header.my_account' | t
+	else
+  	assign profile_link = routes.account_login_url
+		assign profile_text = 'sections.header.login' | t
+	endif
+
+	assign cart_icon = header_settings.cart_icon
+	assign use_icon_account = header_settings.use_icon_account
+
+	if use_icon_account 
+		capture profile_text
+			render 'svg-icons' with 'myaccount'
+		endcapture
+	endif
+-%}
+<div class="thb-secondary-area thb-header-right">
+	{%- unless header_settings.style == 'style4' -%}
+		{%- render 'localization', id: 'HeaderLocalization', show_language_switcher: header_settings.show_language_switcher, show_currency_switcher: header_settings.show_currency_switcher, class: 'inside-header' -%}
+	{%- endunless -%}
+	{% if shop.customer_accounts_enabled %}
+		{% if header_settings.show_shopify_account_menu %}
+		<shopify-account class="thb-shopify-account" menu="{{ header_settings.shopify_account_menu_menu }}">
+			<span slot="signed-out-avatar" class="thb-secondary-area-item">
+				{% render 'svg-icons' with 'myaccount-new' %}
+			</span>
+		</shopify-account>
+		{%- else -%}
+    <a class="thb-secondary-area-item thb-secondary-myaccount thb-secondary-myaccount--icon-{{ use_icon_account }}" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"><span>{{ profile_text }}</span></a>
+		{%- endif -%}
+	{%- endif -%}
+	<a class="thb-secondary-area-item thb-quick-search" href="{{ routes.search_url }}" title="{{ 'sections.header.search' | t }}">{%- render 'svg-icons' with 'search' -%}</a>
+	<a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle"><div class="thb-secondary-item-icon">{%- render 'svg-icons' with cart_icon %} <span class="thb-item-count">{%- if cart.item_count > 99 -%}{%- render 'svg-icons' with 'thb-asterisk' -%}{%- else -%}{{ cart.item_count }}{%- endif -%}</span></div></a>
+</div>

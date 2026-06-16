@@ -1,0 +1,11 @@
+{%- for product in collection.products limit: 16 -%}
+	<div class="columns" data-collection="{{ collection.handle }}">
+		{% render 'product-card', product_card_product: product %}
+	</div>
+{%- endfor -%}
+{% schema %}
+{
+	"name": "Collection Tabs Ajax",
+	"settings": []
+}
+{% endschema %}
