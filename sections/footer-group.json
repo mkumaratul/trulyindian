@@ -10,62 +10,53 @@
           "settings": {
             "column_size": "large",
             "title": "",
-            "text": "<p></p>",
+            "text": "<p>Truly Indian – Simple ingredients, handmade in India.</p>",
             "text_size": "medium",
             "show_social_links": true
-          }
-        },
-        "text-2": {
-          "type": "text",
-          "settings": {
-            "column_size": "large",
-            "title": "",
-            "text": "<p>8212 E. Glen Creek Street Orchard Park, NY 14127,<br/>United States of America</p>",
-            "text_size": "large",
-            "button_text": "Show on google maps",
-            "show_social_links": false
           }
         },
         "menu-1": {
           "type": "menu",
           "settings": {
-            "column_size": "medium",
-            "title": "COMPANY",
-            "menu": "company"
+            "column_size": "small",
+            "title": "SHOP",
+            "menu": "main-menu"
           }
         },
         "menu-2": {
           "type": "menu",
           "settings": {
-            "column_size": "medium",
-            "title": "RESOURCES",
-            "menu": "resources"
+            "column_size": "small",
+            "title": "DISCOVER",
+            "menu": "footer"
           }
         },
         "menu-3": {
           "type": "menu",
           "settings": {
-            "column_size": "medium",
+            "column_size": "small",
             "title": "SUPPORT",
             "menu": "support"
           }
         },
-        "signup": {
-          "type": "signup",
+        "text-2": {
+          "type": "text",
           "settings": {
-            "column_size": "medium",
-            "title": "NEWSLETTER",
-            "text": "<p>Sign up for our newsletter and receive 10% off your first order!</p>"
+            "column_size": "small",
+            "title": "CONTACT",
+            "text": "<p>hello@trulyindian.com</p>",
+            "text_size": "medium",
+            "button_text": "",
+            "show_social_links": false
           }
         }
       },
       "block_order": [
         "text-1",
-        "text-2",
         "menu-1",
         "menu-2",
         "menu-3",
-        "signup"
+        "text-2"
       ],
       "settings": {
         "full_width": true,

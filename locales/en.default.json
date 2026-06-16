@@ -68,7 +68,7 @@
       "all": "All"
     },
     "article": {
-      "read_more": "Read more",
+      "read_more": "View Full Recipe",
       "tags": "Tags:",
       "comments_html": {
         "one": "<span>{{ count }} comment on<\/span> {{ title }}",
@@ -260,7 +260,7 @@
       "shop_collection": "Shop {{ collection }}"
     },
     "featured_blog": {
-      "view_all": "View all posts",
+      "view_all": "View All Recipes",
       "onboarding_title": "Blog post",
       "onboarding_content": "Give your customers a summary of your blog post"
     },

@@ -1,0 +1,236 @@
+/* Truly Indian — homepage redesign
+   Brand tokens + per-section styling. Sections are targeted via an
+   "ends with" attribute selector on their Shopify-assigned wrapper id
+   (id="shopify-section-template--N__<id>"), with the ids set
+   deliberately in templates/index.json so this file can stay decoupled
+   from the section .liquid files themselves. */
+
+@font-face {
+	font-family: 'Decofree';
+	src: url('https://cdn.shopify.com/s/files/1/0753/6561/3759/files/decofree.woff?v=1780641270') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--ti-red: #d6293a;
+	--ti-red-dark: #b81e2d;
+	--ti-yellow: #ffc211;
+	--ti-navy: #16204a;
+	--ti-cream: #fdf1e1;
+	--ti-gold: #f0a93b;
+	--ti-blue: #1f3fae;
+	--ti-orange: #e8542e;
+	--ti-peach: #f3dcc4;
+	--ti-pink: #e8166f;
+	--ti-magenta: #d6167a;
+	--ti-teal: #1ea6a6;
+	--ti-ink: #151515;
+
+	--ti-font-display: 'Decofree', 'Archivo Narrow', sans-serif;
+	--ti-font-script: 'Caveat', cursive;
+}
+
+.ti-headline {
+	font-family: var(--ti-font-display);
+	font-weight: normal;
+	letter-spacing: 0.02em;
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+
+.ti-headline .ti-script,
+.ti-script {
+	font-family: var(--ti-font-script);
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+/* ---------- Header CTA buttons (style3) ---------- */
+.header-ctas {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.header-cta {
+	white-space: nowrap;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	padding: 9px 16px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.header-cta--outline {
+	border: 1px solid currentColor;
+	color: inherit;
+}
+
+.header-cta--solid {
+	background: var(--ti-yellow);
+	color: var(--ti-ink);
+}
+
+/* ---------- Hero ---------- */
+[id$="__ti-hero"] .slideshow__heading,
+[id$="__ti-hero"] h1 {
+	font-family: var(--ti-font-display);
+}
+
+[id$="__ti-hero"] .ti-script {
+	display: inline-block;
+	background: var(--ti-blue);
+	color: #fff;
+	padding: 0.05em 0.35em;
+	border-radius: 6px;
+	transform: rotate(-2deg);
+}
+
+/* ---------- Trust badge strips ---------- */
+[id$="__ti-badges-1"],
+[id$="__ti-badges-2"] {
+	padding-top: 28px;
+	padding-bottom: 28px;
+}
+
+[id$="__ti-badges-1"] .text-with-icons__icon,
+[id$="__ti-badges-2"] .text-with-icons__icon {
+	border-radius: 50%;
+	background: #fff;
+	width: 64px;
+	height: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-inline: auto;
+	box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+[id$="__ti-badges-1"] .text-with-icons__icon svg,
+[id$="__ti-badges-2"] .text-with-icons__icon svg {
+	width: 28px;
+	height: 28px;
+}
+
+[id$="__ti-badges-1"] h6,
+[id$="__ti-badges-2"] h6 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	margin-top: 10px;
+}
+
+/* ---------- Explore Authentic Flavors ---------- */
+[id$="__ti-explore"] .section-header h2 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Trace It Back to the Soil ---------- */
+[id$="__ti-soil"] {
+	position: relative;
+	overflow: hidden;
+}
+
+[id$="__ti-soil"]::before {
+	content: 'FARM';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-family: var(--ti-font-display);
+	font-size: 18vw;
+	color: rgba(255, 255, 255, 0.18);
+	white-space: nowrap;
+	pointer-events: none;
+	z-index: 0;
+}
+
+[id$="__ti-soil"] .image-with-text-overlay--content {
+	position: relative;
+	z-index: 1;
+}
+
+[id$="__ti-soil"] .image-with-text-overlay--heading {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Loved by All ---------- */
+[id$="__ti-loved"] .testimonials__author {
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	font-weight: 700;
+}
+
+/* ---------- A Dash of Salt (recipes) ---------- */
+[id$="__ti-recipes"] {
+	position: relative;
+	background: var(--ti-orange);
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+[id$="__ti-recipes"] .section-header h2,
+[id$="__ti-recipes"] .section-header .text-button {
+	color: #fff;
+}
+
+[id$="__ti-recipes"] .section-header h2 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+[id$="__ti-recipes"] .blog-post {
+	background: #fff;
+	padding: 14px 14px 20px;
+	border-radius: 4px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+	transform: rotate(-1.5deg);
+}
+
+[id$="__ti-recipes"] .row > div:nth-child(2) .blog-post {
+	transform: rotate(1.5deg);
+}
+
+[id$="__ti-recipes"] .blog-post h5 a {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Featured & How / Awards ---------- */
+[id$="__ti-awards-badges"] {
+	background: var(--ti-peach);
+	padding-top: 40px;
+}
+
+[id$="__ti-awards-badges"] .section-header h2 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Taste the Real India CTA ---------- */
+[id$="__ti-cta"] h3,
+[id$="__ti-cta"] .image-with-text h3 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Join the Family ---------- */
+[id$="__ti-newsletter"] .email-signup h2 {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+	background: var(--ti-magenta);
+}
+
+#footer .thb-widget-title {
+	font-family: var(--ti-font-display);
+	text-transform: uppercase;
+}
